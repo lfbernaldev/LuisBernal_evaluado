@@ -91,6 +91,54 @@ app.post('/guardar_usuario', (req, res) => {
 });
 
 
+app.get('/ejecutar_reporte/:reporte', (req, res) => {
+
+    try {
+
+        const reporte = req.params.reporte;
+
+
+        if (reporte === 'R1') {
+            // Reporte: de todos los usuarios 
+            conexion.query('SELECT id, nombre, telefono FROM usuario', (err, result) => {
+                if (err) {
+                    res.status(500).send({ error: err.message });
+                    return;
+                }
+                res.status(200).json(result);
+            });
+        } else if (reporte === 'R2') {
+            // Reporte: todos los usuarios creados hoy
+            conexion.query('SELECT id, nombre, telefono FROM usuario WHERE DATE(fecha_creacion) = CURDATE()', (err, result) => {
+                if (err) {
+                    res.status(500).send({ error: err.message });
+                    return;
+                }
+                res.status(200).json(result);
+            });
+        } else if (reporte === 'R3') {
+            // Reporte: todos los usuarios creados el dia de ayer
+            conexion.query('SELECT id, nombre, telefono FROM usuario WHERE DATE(fecha_creacion) = CURDATE() - INTERVAL 1 DAY', (err, result) => {
+                if (err) {
+                    res.status(500).send({ error: err.message });
+                    return;
+                }
+                res.status(200).json(result);
+            });
+        } else {
+            res.status(500).json({ error: 'Reporte no reconocido' });
+        }
+
+
+    } catch (err) {
+        res.status(500).send({ error: err.message });
+        return;
+    }
+
+});
+
+
+
 app.listen(3000, () => {
     console.log('Servidor corriendo en http://localhost:3000');
 });  
