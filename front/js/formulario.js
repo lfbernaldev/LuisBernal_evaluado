@@ -21,7 +21,7 @@ document.getElementById("formulario").addEventListener("submit", function (event
         return;
     }
 
-    if (!/^\d{2}\/\d{2}\/\d{4}$/.test($fechaNacimiento)) {
+    if (!/^\d{2}-\d{2}-\d{4}$/.test($fechaNacimiento)) {
         alert("La fecha de nacimiento debe tener el formato dd-mm-aaaa.");
         return;
     }
@@ -37,7 +37,7 @@ document.getElementById("formulario").addEventListener("submit", function (event
 
 function calcularEdad(fechaNacimiento) {
 
-    const [dia, mes, anio] = fechaNacimiento.split("/").map(Number);
+    const [dia, mes, anio] = fechaNacimiento.split("-").map(Number);
 
     console.log(dia, mes, anio);
 
@@ -59,7 +59,7 @@ document.getElementById("fechaNacimiento").addEventListener("input", function ()
     const $spanEdad = document.getElementById("spanEdad");
 
 
-    if (/^\d{2}\/\d{2}\/\d{4}$/.test(fechaNacimiento)) {
+    if (/^\d{2}-\d{2}-\d{4}$/.test(fechaNacimiento)) {
 
         const edad = calcularEdad(fechaNacimiento);
 

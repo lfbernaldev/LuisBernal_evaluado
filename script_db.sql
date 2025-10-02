@@ -18,10 +18,10 @@ INSERT INTO EstadoUsuario (id, titulo, clave) VALUES
 CREATE TABLE usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    fecha DATE NOT NULL,
-    teléfono VARCHAR(20) NOT NULL,
+    fecha_nacimiento DATE NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
     correo VARCHAR(100) NOT NULL,
-    creación DATETIME NOT NULL,
+    fecha_creacion DATE NOT NULL,
     EstadoUsuarioId INT NOT NULL ,
     FOREIGN KEY (EstadoUsuarioId) REFERENCES EstadoUsuario(id)
 );
