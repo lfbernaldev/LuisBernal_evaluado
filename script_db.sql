@@ -32,5 +32,5 @@ CREATE TABLE punteo_usuario(
     id_usuario INT NOT NULL,
     punteo_obtenido INT NOT NULL,
     fecha_ingreso DATE NOT NULL,
-    FOREIGN KEY (usuario) REFERENCES usuario(id)
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 )
