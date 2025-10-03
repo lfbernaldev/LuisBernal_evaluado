@@ -25,3 +25,12 @@ CREATE TABLE usuario (
     EstadoUsuarioId INT NOT NULL ,
     FOREIGN KEY (EstadoUsuarioId) REFERENCES EstadoUsuario(id)
 );
+
+-- Crear tabla de punteo de usuario
+CREATE TABLE punteo_usuario(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    punteo_obtenido INT NOT NULL,
+    fecha_ingreso DATE NOT NULL,
+    FOREIGN KEY (usuario) REFERENCES usuario(id)
+)
